@@ -27,6 +27,9 @@ public class Schedule implements Serializable {
     @ManyToMany
     private List<Employee> employees;
 
+    @ManyToMany
+    private List<Pet> pets;
+
     @ElementCollection
     private Set<EmployeeSkill> activities;
 }
