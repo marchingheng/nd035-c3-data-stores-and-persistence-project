@@ -29,4 +29,8 @@ public class Customer implements Serializable {
 
     @OneToMany(mappedBy = "customer")
     private Set<Pet> pets;
+
+    public void insertPet(Pet pet){
+        pets.add(pet);
+    }
 }
