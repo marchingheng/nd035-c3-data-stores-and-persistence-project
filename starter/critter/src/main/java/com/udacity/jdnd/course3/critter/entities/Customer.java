@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table
@@ -28,7 +28,7 @@ public class Customer implements Serializable {
     private String notes;
 
     @OneToMany(mappedBy = "customer")
-    private Set<Pet> pets;
+    private List<Pet> pets;
 
     public void insertPet(Pet pet){
         pets.add(pet);

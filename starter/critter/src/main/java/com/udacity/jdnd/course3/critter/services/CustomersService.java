@@ -5,12 +5,13 @@ import com.udacity.jdnd.course3.critter.entities.Pet;
 import com.udacity.jdnd.course3.critter.repositories.CustomerRepository;
 import com.udacity.jdnd.course3.critter.repositories.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
+@Service
 public class CustomersService {
     @Autowired
     private CustomerRepository customerRepository;
@@ -22,14 +23,14 @@ public class CustomersService {
         return customerRepository.findAll();
     }
 
-    public Customer getCustomerByPetId(Long PetId){
-        return petRepository.getOne(PetId).getCustomer();
+    public Customer getCustomerByPetId(Long petId){
+        return petRepository.getOne(petId).getCustomer();
     }
 
     public Customer saveCustomer(Customer customer, List<Long>petIds){
-        Set<Pet> pets = new HashSet<>();
+        List<Pet> pets = new ArrayList<>();
         if (petIds != null && !petIds.isEmpty()){
-            pets = petIds.stream().map(petId -> petRepository.getOne(petId)).collect(Collectors.toSet());
+            pets = petIds.stream().map(petId -> petRepository.getOne(petId)).collect(Collectors.toList());
         }
         customer.setPets(pets);
         return customerRepository.save(customer);
