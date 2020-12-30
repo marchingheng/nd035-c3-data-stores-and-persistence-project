@@ -78,3 +78,13 @@ Each entry in this collection contains information in its `Body` tab if necessar
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md]()
+
+## Yuheng's Note
+
+Before run the app, make sure you run the below sql script in MySQL workbench to create the schema, create user and grant user access to the schema:
+CREATE SCHEMA `critter` ; -- Create the plant database
+
+CREATE USER 'sa'@'localhost' IDENTIFIED BY 'sa1234'; -- Create the user if you haven’t yet
+GRANT ALL ON plant.* TO 'sa'@'localhost'; -- Gives all privileges to the new user on plant
+
+
